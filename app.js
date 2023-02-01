@@ -3,24 +3,37 @@ document.addEventListener("input",input)
 function input(){
     let ans =document.getElementById("binary").value
 
-    let val = ans.split("")
+    let val1 = ans.split("")
 
-    let val2 =val.reverse()
+    let val2 =val1.reverse()
 
+    return val2
 
-    let arr=[];
+}
 
+let convert =document.getElementById("btn")
 
+convert.addEventListener("click",val)
 
-    console.log(val2)
-    val2.forEach((val,index)=>{
+function val(e){
+e.preventDefault()
+
+    values =[]
+    let ans2 = input() 
+
+    ans2.forEach((val,index)=>{
         if(val == 1){
-            let val3 = Math.pow(2,index)
-            arr.push(val3)
+            arr = Math.pow(2,index)
+            values.push(arr)
+        }
+
+        if(values.length == 0){
+            document.getElementById("ans").innerText=0
+        }
+        else{
+            let answer = values.reduce((acc,cur)=>acc+cur)
+
+            document.getElementById("ans").innerText=answer
         }
     })
-
-    let ans2 = arr.reduce((red,curr)=> red+curr)
-
-    document.getElementById("ans").innerText=ans2
 }
